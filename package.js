@@ -2,7 +2,7 @@ Package.describe({
   name: "jameslefrere:autoform-semantic-ui",
   summary: "Semantic UI theme for Autoform",
   version: "0.1.0",
-  git: " /* Fill me in! */ "
+  git: "https://github.com/JamesLefrere/meteor-autoform-semantic-ui.git"
 });
 
 Package.onUse(function(api) {
