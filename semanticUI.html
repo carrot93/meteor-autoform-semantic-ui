@@ -29,9 +29,9 @@
 
 <template name="afObjectField_semanticUI">
   {{#with afFieldLabelText name=this.atts.name}}
-  <h4 class="ui block top attached header">{{this}}</h4>
+  <h4 class="ui block header top attached">{{this}}</h4>
   {{/with}}
-  <div class="ui bottom attached secondary segment form error">
+  <div class="ui secondary segment form error">
     {{#if afFieldIsInvalid name=this.atts.name}}
     <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
     {{/if}}
@@ -40,20 +40,22 @@
 </template>
 
 <template name="afArrayField_semanticUI">
-  <h4 class="ui block top attached header">
+  <h4 class="ui block header top attached">
     {{afFieldLabelText name=this.atts.name}}
   </h4>
   {{#if afFieldIsInvalid name=this.atts.name}}
-  <div class="ui bottom attached secondary segment form error">
+  <div class="ui form error">
     <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
   </div>
   {{/if}}
-  <div class="ui bottom attached secondary segment">
+  <div class="ui secondary segment bottom attached">
     {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
     <div class="field autoform-array-item">
       <div class="ui input">
         {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
-        <div class="ui button small attached top inline autoform-remove-item">Remove</div>
+        <div class="ui label small red right corner autoform-remove-item">
+          <i class="icon minus"></i>
+        </div>
         {{/if}}
         {{> afQuickField name=this.name label=false options="auto"}}
       </div>
@@ -69,10 +71,8 @@
 
 <template name="afCheckbox_semanticUI">
   <div class="ui checkbox">
-    <label>
-      <input type="checkbox" value="{{this.value}}" {{atts}} />
-      {{afFieldLabelText name=this.name}}
-    </label>
+    <input type="checkbox" value="{{this.value}}" {{atts}} />
+    <label>{{afFieldLabelText name=this.name}}</label>
   </div>
 </template>
 
@@ -103,8 +103,8 @@
     {{#each this.items}}
       <div class="field">
         <div class="ui radio checkbox">
-            <input type="radio" value="{{this.value}}" {{atts}} />
-            <label>{{this.label}}</label>
+          <input type="radio" value="{{this.value}}" {{atts}} />
+          <label>{{this.label}}</label>
         </div>
       </div>
     {{/each}}

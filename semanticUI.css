@@ -1,3 +1,13 @@
-.ui.form .attached.inline {
+.ui.form .autoform-remove-item {
   display: inline-block;
+}
+
+.ui.form .autoform-array-item .segment {
+  margin-top: 0;
+}
+
+.ui .autoform-array-item>.input .ui.corner.label {
+  top: 0;
+  right: 0;
+  left: auto;
 }

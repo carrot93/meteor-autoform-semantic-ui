@@ -50,13 +50,22 @@ _.each [
   return
 
 selectHelpers = optionAtts: afSelectOptionAtts = ->
-  item = this
-  atts = value: item.value
-  atts.selected = ""  if item.selected
+  atts = value: @value
+  atts.selected = ""  if @selected
   atts
 
-Template["afSelect_semanticUI"].helpers selectHelpers
+Template["afSelect_semanticUI"].helpers
+  optionAtts: selectHelpers.optionAtts
+  atts: ->
+    if @atts.class? then @atts.class += " " else @atts.class = ""
+    @atts.class += "ui dropdown"
+    @atts
+
 Template["afSelectMultiple_semanticUI"].helpers selectHelpers
 Template["afBooleanSelect_semanticUI"].helpers selectHelpers
+
+Template["afQuickField"].rendered = ->
+  $("select.dropdown").dropdown()
+  $(".ui.checkbox").checkbox()
 
 AutoForm.setDefaultTemplate "semanticUI"
