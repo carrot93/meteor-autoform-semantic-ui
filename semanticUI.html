@@ -4,13 +4,13 @@
       {{> afQuickFields}}
       {{#if qfShouldRenderButton}}
       <div class="field">
-        <div {{submitButtonAtts}}>
+        <button type="submit" {{submitButtonAtts}}>
         {{#with ../atts.buttonContent}}
         {{this}}
         {{else}}
         Submit
         {{/with}}
-        </div>
+        </button>
       </div>
       {{/if}}
     {{/autoForm}}
