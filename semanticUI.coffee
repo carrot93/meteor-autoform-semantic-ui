@@ -1,14 +1,28 @@
 #
 # * Template helpers for "semanticUI" template
 # 
-Template["quickForm_semanticUI"].helpers submitButtonAtts: bsQuickFormSubmitButtonAtts = ->
-  qfAtts = @atts
-  atts = {}
-  if typeof qfAtts.buttonClasses is "string"
-    atts["class"] = qfAtts.buttonClasses
-  else
-    atts["class"] = "ui submit button"
-  atts
+
+# @todo: Template["autoForm_semanticUI"] is undefined – bug?
+Template["autoForm"].helpers
+  atts: autoFormTplAtts = ->
+    context = _.clone(this)
+    context.novalidate = "novalidate"  if context.validation isnt "browser" and not context.novalidate
+    context.class = "ui form"
+    _.omit context, "schema", "collection", "validation", "doc", "resetOnSuccess", "type", "template", "autosave", "meteormethod", "filter", "autoConvert", "removeEmptyStrings", "trimStrings"
+
+Template["quickForm_semanticUI"].helpers
+  qfAutoFormContext: ->
+    ctx = _.clone(@qfAutoFormContext or {})
+    ctx = AutoForm.Utility.addClass(ctx, "ui form")
+    return ctx
+  submitButtonAtts: bsQuickFormSubmitButtonAtts = ->
+    qfAtts = @atts
+    atts = {}
+    if typeof qfAtts.buttonClasses is "string"
+      atts["class"] = qfAtts.buttonClasses
+    else
+      atts["class"] = "ui submit button"
+    return atts
 
 _.each [
   "afInputButton_semanticUI"
