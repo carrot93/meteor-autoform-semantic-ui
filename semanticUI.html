@@ -31,7 +31,7 @@
   {{#with afFieldLabelText name=this.atts.name}}
   <h4 class="ui block header top attached">{{this}}</h4>
   {{/with}}
-  <div class="ui secondary segment form error">
+  <div class="ui secondary attached segment form error">
     {{#if afFieldIsInvalid name=this.atts.name}}
     <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
     {{/if}}
