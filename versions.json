@@ -74,7 +74,11 @@
     ],
     [
       "mrt:moment",
-      "2.6.0"
+      "2.8.1"
+    ],
+    [
+      "nooitaf:semantic-ui",
+      "1.1.2"
     ],
     [
       "observe-sequence",
