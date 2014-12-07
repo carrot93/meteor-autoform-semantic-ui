@@ -112,19 +112,15 @@
 </template>
 
 <template name="afSelect_semanticUI">
-  <select {{atts}}>
-    {{#each this.items}}
-      {{#if this.optgroup}}
-        <optgroup label="{{this.optgroup}}">
-        {{#each this.items}}
-        <option {{optionAtts}}>{{this.label}}</option>
-        {{/each}}
-        </optgroup>
-      {{else}}
-        <option {{optionAtts}}>{{this.label}}</option>
-      {{/if}}
-    {{/each}}
-  </select>
+  <div class="ui selection dropdown">
+    <i class="dropdown icon"></i>
+    <div class="default text">{{this.firstOption}}</div>
+    <div class="menu" data-schema-key="{{this.name}}">
+      {{#each this.items}}
+      <div class="item" data-value="{{optionAtts.val}}">{{this.label}}</div>
+      {{/each}}
+    </div>
+  </div>
 </template>
 
 <template name="afBooleanSelect_semanticUI">
