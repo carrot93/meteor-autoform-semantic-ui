@@ -81,7 +81,7 @@ Template["afBooleanSelect_semanticUI"].helpers selectHelpers
 Template["afSelect_semanticUI"].rendered = ->
   $(@firstNode).dropdown()
 
-Template["afQuickField_semanticUI"].rendered = ->
+Template["afQuickField"].rendered = ->
   $(".ui.checkbox").checkbox()
 
 AutoForm.setDefaultTemplate "semanticUI"
