@@ -66,6 +66,8 @@ _.each [
 selectHelpers = optionAtts: afSelectOptionAtts = ->
   atts = value: @value
   atts.selected = ""  if @selected
+  console.log @
+  console.log atts
   atts
 
 Template["afSelect_semanticUI"].helpers
@@ -90,7 +92,7 @@ AutoForm.setDefaultTemplate "semanticUI"
 AutoForm.addInputType "select",
   template: "afSelect"
   valueOut: ->
-    val = $(@find(".selected")).text()
+    val = $(@find(".selected")).data("value")
     AutoForm.Utility.stringToNumber val
   contextAdjust: (context) ->
     #can fix issues with some browsers selecting the firstOption instead of the selected option

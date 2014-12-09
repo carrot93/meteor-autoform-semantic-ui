@@ -1,0 +1,23 @@
+<template name="index">
+  <h1>Autoform Semantic UI Example</h1>
+  <div class="ui segment">
+    <p>This is a set of simple examples used to demo the package and also run some tests.</p>
+  </div>
+  <h2>Dogs</h2>
+  <table class="ui table">
+    <thead>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Age</th>
+    </thead>
+    {{#each dogs}}
+    <tr>
+      <td>
+        <a class="item" href="{{pathFor 'update'}}">{{name}}</a>
+      </td>
+      <td>{{breed}}</td>
+      <td>{{age}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
