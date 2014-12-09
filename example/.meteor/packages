@@ -10,7 +10,5 @@ aldeed:autoform
 aldeed:simple-schema
 aldeed:collection2
 coffeescript
-iron:router
 nooitaf:semantic-ui
-zimme:iron-router-active
 jameslefrere:autoform-semantic-ui

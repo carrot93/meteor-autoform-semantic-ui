@@ -1,3 +1,5 @@
+SimpleSchema.debug = true
+
 @Dogs = new Mongo.Collection "dogs"
 
 breeds = [
@@ -18,15 +20,39 @@ breeds = [
   "White Wire Fox Terrier"
 ]
 
+things = [
+  "Ball"
+  "Barking"
+  "Cats"
+  "Food"
+  "Fireworks"
+  "Frisbee"
+  "Hoovers"
+  "Kids"
+  "Moorhens"
+  "Running"
+  "Sleeping"
+  "Swimming"
+  "Vets"
+]
+
 dogSchema = new SimpleSchema(
   name:
     type: String
-  breed:
+  sex:
     type: String
-    allowedValues: breeds
+    allowedValues: ["m", "f"]
     autoform:
-      options: _.map breeds, (breed) ->
-        label: breed, value: breed
+      options: [
+        {
+          label: "Male"
+          value: "m"
+        }
+        {
+          label: "Female"
+          value: "f"
+        }
+      ]
   age:
     type: Number
     min: 0
@@ -34,6 +60,33 @@ dogSchema = new SimpleSchema(
   beenDone:
     type: Boolean
     label: "Neutered/spayed"
+    autoform:
+      trueLabel: "Neutered/spayed :)"
+      falseLabel: "Fix your dog!"
+  breed:
+    type: String
+    allowedValues: breeds
+    autoform:
+      search: true
+      allowedValues: breeds
+  likes:
+    # No support in Semantic for multiple select dropdown yet
+    # https://github.com/Semantic-Org/Semantic-UI/issues/847
+    type: [String]
+    optional: true
+    allowedValues: things
+  dislikes:
+    type: [String]
+    optional: true
+    allowedValues: things
+    autoform:
+      type: "select-checkbox"
+  faveThing:
+    type: String
+    optional: true
+    allowedValues: things
+    autoform:
+      type: "select-radio"
 )
 
-@Dogs.attachSchema dogSchema
+Dogs.attachSchema dogSchema

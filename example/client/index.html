@@ -8,16 +8,43 @@
     <thead>
       <th>Name</th>
       <th>Breed</th>
-      <th>Age</th>
+      <th>Fave thing</th>
+      <th>Actions</th>
     </thead>
+    <tbody>
     {{#each dogs}}
-    <tr>
-      <td>
-        <a class="item" href="{{pathFor 'update'}}">{{name}}</a>
-      </td>
-      <td>{{breed}}</td>
-      <td>{{age}}</td>
-    </tr>
+      <tr>
+        <td>{{name}}</td>
+        <td>{{breed}}</td>
+        <td>{{faveThing}}</td>
+        <td>
+          <div class="ui icon button delete-dog">
+            <i class="delete icon"></i>
+          </div>
+          <div class="ui icon button edit-dog">
+            <i class="edit icon"></i>
+          </div>
+        </td>
+      </tr>
     {{/each}}
+    </tbody>
   </table>
+  <div class="ui button add-dog">
+    <i class="plus icon"></i>
+    Add a dog
+  </div>
+  {{> modal title="Add a dog" type="insert"}}
+  {{> modal title="Update a dog" type="update"}}
+</template>
+
+<template name="modal">
+  <div class="ui modal {{name}} {{type}}">
+    <i class="close icon"></i>
+    <div class="header">
+      {{title}}
+    </div>
+    <div class="content">
+      {{> quickForm collection="Dogs" type=type doc=updateDoc}}
+    </div>
+  </div>
 </template>
