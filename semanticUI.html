@@ -111,24 +111,28 @@
   </div>
 </template>
 
-<template name="afSelect_semanticUI">
-  <div class="ui selection dropdown">
-    <i class="dropdown icon"></i>
-    <div class="default text">{{this.firstOption}}</div>
-    <div class="menu" data-schema-key="{{this.name}}">
-      {{#each this.items}}
-      <div class="item" data-value="{{this.value}}">{{this.label}}</div>
-      {{/each}}
-    </div>
-  </div>
-</template>
-
 <template name="afBooleanSelect_semanticUI">
   <select {{atts}}>
     {{#each this.items}}
       <option {{optionAtts}}>{{this.label}}</option>
     {{/each}}
   </select>
+</template>
+
+<template name="afSelect_semanticUI">
+  <div class="ui selection dropdown">
+    <i class="dropdown icon"></i>
+    {{#if this.value}}
+      <div class="default text">{{this.value}}</div>
+    {{else}}
+      <div class="default text">{{this.atts.firstOption}}</div>
+    {{/if}}
+    <div class="menu" data-schema-key="{{this.name}}">
+      {{#each this.items}}
+        <div class="item{{#if this.selected}} selected active{{/if}}" data-value="{{this.value}}">{{this.label}}</div>
+      {{/each}}
+    </div>
+  </div>
 </template>
 
 <template name="afSelectMultiple_semanticUI">
