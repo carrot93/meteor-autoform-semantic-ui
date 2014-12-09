@@ -43,6 +43,15 @@ Template["afRadio_semanticUI"].helpers atts: selectedAttsAdjust = ->
   atts.checked = ""  if @selected
   atts
 
+Template["afRadio_semanticUI"].rendered = ->
+  $(@firstNode).checkbox()
+
+Template["afRadioGroup_semanticUI"].rendered = ->
+  $(@firstNode).find(".ui.radio.checkbox").checkbox()
+
+Template["afCheckboxGroup_semanticUI"].rendered = ->
+  $(@firstNode).find(".ui.checkbox").checkbox()
+
 _.each [
   "afCheckboxGroup_semanticUI"
   "afRadioGroup_semanticUI"
@@ -55,37 +64,12 @@ _.each [
       # remove data-schema-key attribute because we put it
       # on the entire group
       delete atts["data-schema-key"]
-
       atts
 
     dsk: dsk = ->
       "data-schema-key": @atts["data-schema-key"]
 
   return
-
-selectHelpers = optionAtts: afSelectOptionAtts = ->
-  atts = value: @value
-  atts.selected = ""  if @selected
-  console.log @
-  console.log atts
-  atts
-
-Template["afSelect_semanticUI"].helpers
-  optionAtts: selectHelpers.optionAtts
-  atts: ->
-    if @atts.class? then @atts.class += " " else @atts.class = ""
-    @atts.class += "ui dropdown"
-    @atts
-
-Template["afSelectMultiple_semanticUI"].helpers selectHelpers
-Template["afBooleanSelect_semanticUI"].helpers selectHelpers
-
-Template["afSelect_semanticUI"].rendered = ->
-  $(@firstNode).dropdown()
-
-Template["afQuickField"].rendered = ->
-  $(".ui.checkbox").checkbox()
-
 
 # Overriding the select input type for Semantic's markup
 AutoForm.addInputType "select",
@@ -94,6 +78,13 @@ AutoForm.addInputType "select",
     val = $(@find(".selected")).data("value")
     AutoForm.Utility.stringToNumber val
   contextAdjust: (context) ->
+    classes = [
+      "ui"
+      "dropdown"
+      "selection"
+    ]
+    if context.atts.search then classes.push "search"
+    context.atts.class = classes.join(" ")
     context.atts.autocomplete = "off"
     itemAtts = _.omit(context.atts, "firstOption")
     if typeof context.atts.firstOption is "undefined" then context.atts.firstOption = "Select one"
@@ -136,5 +127,15 @@ AutoForm.addInputType "select",
       return
 
     return context
+
+
+Template["afSelect_semanticUI"].helpers
+  atts: ->
+    if @atts.class? then @atts.class += " " else @atts.class = ""
+    @atts.class += "ui dropdown"
+    @atts
+
+Template["afSelect_semanticUI"].rendered = ->
+  $(@firstNode).dropdown()
 
 AutoForm.setDefaultTemplate "semanticUI"

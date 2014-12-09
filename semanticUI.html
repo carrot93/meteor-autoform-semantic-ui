@@ -77,20 +77,20 @@
 </template>
 
 <template name="afCheckboxGroup_semanticUI">
-  <div class="grouped inline fields" {{dsk}}>
-    {{#each this.items}}
-      <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" value="{{this.value}}" {{atts}} />
-          <label>{{this.label}}</label>
-        </div>
+  <div class="grouped fields" {{dsk}}>
+  {{#each this.items}}
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" value="{{this.value}}" {{atts}} />
+        <label>{{label}}</label>
       </div>
-    {{/each}}
+    </div>
+  {{/each}}
   </div>
 </template>
 
 <template name="afRadio_semanticUI">
-  <div class="ui radio">
+  <div class="ui radio checkbox">
     <label>
       <input type="radio" value="{{this.value}}" {{atts}} />
       {{afFieldLabelText name=this.name}}
@@ -99,7 +99,7 @@
 </template>
 
 <template name="afRadioGroup_semanticUI">
-  <div class="grouped inline fields" {{dsk}}>
+  <div class="grouped fields" {{dsk}}>
     {{#each this.items}}
       <div class="field">
         <div class="ui radio checkbox">
@@ -111,16 +111,8 @@
   </div>
 </template>
 
-<template name="afBooleanSelect_semanticUI">
-  <select {{atts}}>
-    {{#each this.items}}
-      <option {{optionAtts}}>{{this.label}}</option>
-    {{/each}}
-  </select>
-</template>
-
 <template name="afSelect_semanticUI">
-  <div class="ui selection dropdown">
+  <div class="{{atts.class}}">
     <i class="dropdown icon"></i>
     {{#if this.value}}
       <div class="default text">{{this.value}}</div>
@@ -133,22 +125,6 @@
       {{/each}}
     </div>
   </div>
-</template>
-
-<template name="afSelectMultiple_semanticUI">
-  <select {{atts}} multiple>
-    {{#each this.items}}
-      {{#if this.optgroup}}
-        <optgroup label="{{this.optgroup}}">
-        {{#each this.items}}
-        <option {{optionAtts}}>{{this.label}}</option>
-        {{/each}}
-        </optgroup>
-      {{else}}
-        <option {{optionAtts}}>{{this.label}}</option>
-      {{/if}}
-    {{/each}}
-  </select>
 </template>
 
 <template name="afTextarea_semanticUI">
