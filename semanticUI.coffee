@@ -49,6 +49,9 @@ Template["afRadio_semanticUI"].rendered = ->
 Template["afRadioGroup_semanticUI"].rendered = ->
   $(@firstNode).find(".ui.radio.checkbox").checkbox()
 
+Template["afCheckbox_semanticUI"].rendered = ->
+  $(@firstNode).checkbox()
+
 Template["afCheckboxGroup_semanticUI"].rendered = ->
   $(@firstNode).find(".ui.checkbox").checkbox()
 
