@@ -49,11 +49,11 @@ Template["afRadio_semanticUI"].rendered = ->
 Template["afRadioGroup_semanticUI"].rendered = ->
   $(@firstNode).find(".ui.radio.checkbox").checkbox()
 
-Template["afCheckbox_semanticUI"].rendered = ->
-  $(@firstNode).checkbox()
-
 Template["afCheckboxGroup_semanticUI"].rendered = ->
   $(@firstNode).find(".ui.checkbox").checkbox()
+
+Template["afCheckbox_semanticUI"].rendered = ->
+  $(@firstNode).checkbox()
 
 _.each [
   "afCheckboxGroup_semanticUI"
@@ -131,8 +131,11 @@ AutoForm.addInputType "select",
 
     return context
 
-
 Template["afSelect_semanticUI"].helpers
+  selected: ->
+    selectedItem = _.findWhere(@items, selected: true)
+    if typeof selectedItem isnt "undefined" then return selectedItem.label
+    return
   atts: ->
     if @atts.class? then @atts.class += " " else @atts.class = ""
     @atts.class += "ui dropdown"
