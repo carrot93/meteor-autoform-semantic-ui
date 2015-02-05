@@ -43,12 +43,12 @@
   <h4 class="ui block header top attached">
     {{afFieldLabelText name=this.atts.name}}
   </h4>
-  {{#if afFieldIsInvalid name=this.atts.name}}
-  <div class="ui form error">
-    <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
-  </div>
-  {{/if}}
   <div class="ui secondary segment bottom attached">
+    {{#if afFieldIsInvalid name=this.atts.name}}
+    <div class="ui form error">
+      <div class="error message">{{{afFieldMessage name=this.atts.name}}}</div>
+    </div>
+    {{/if}}
     {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
     <div class="field autoform-array-item">
       <div class="ui input">
