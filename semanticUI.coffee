@@ -139,6 +139,7 @@ Template["afSelect_semanticUI"].helpers
   atts: ->
     if @atts.class? then @atts.class += " " else @atts.class = ""
     @atts.class += "ui dropdown"
+    if @atts.disabled? then @atts.class += " disabled"
     @atts
 
 Template["afSelect_semanticUI"].rendered = ->
