@@ -1,1 +1,1 @@
-# Moved to https://github.com/abernix/meteor-autoform-semantic-ui
+# Moved to https://github.com/fabienb4/meteor-autoform-semantic-ui
