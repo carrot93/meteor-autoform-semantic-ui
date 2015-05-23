@@ -41,10 +41,14 @@
   <div class="ui modal {{name}} {{type}}">
     <i class="close icon"></i>
     <div class="header">
-      {{title}}
+      {{title}} {{type}}
     </div>
     <div class="content">
-      {{> quickForm collection="Dogs" type=type doc=updateDoc}}
+    {{#if ptype}}
+      {{> quickForm collection="Dogs" type="insert" doc=updateDoc}}
+    {{else}}
+      {{> quickForm collection="Dogs" type="update" doc=updateDoc}}
+    {{/if}}
     </div>
   </div>
 </template>
